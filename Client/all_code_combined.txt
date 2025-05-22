@@ -1,0 +1,1181 @@
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\App.js ===== 
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+import Register from "./Pages/Register.js"
+import Login from "./Pages/Login.js"
+import Single from "./Pages/Single.js"
+import Home from "./Pages/Home.js"
+import Navbar from "./Components/Navbar.js";
+import Write from "./Pages/Write.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Layout = ()=>{
+  return (
+    <>
+    <Navbar/>
+    <Outlet/>
+    </>
+  )
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout/>,
+    children:[
+      {
+        path:"/",
+        element:<Home/>
+      },
+      {
+        path:"/post/:id",
+        element:<Single/>
+      },
+      {
+        path:"/write",
+        element:<Write/>
+      },
+      {
+        path: "/login",
+        element: <Login/>,
+      },
+      {
+        path: "/register",
+        element: <Register/>,
+      },
+    ]
+  },
+  // {
+  //   path: "/register",
+  //   element: <Register/>,
+  // },
+  // {
+  //   path: "/login",
+  //   element: <Login/>,
+  // },
+  // {
+  //   path: "/register",
+  //   element: <Register/>,
+  // },
+]);
+
+
+function App() {
+  return (
+    <div className="app" >
+      <div className="container">
+      <RouterProvider router={router} />
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+export default App;
+
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\BlogsSample.js ===== 
+module.exports = [
+    {
+            "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+            "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+            "author":"Pankil Shah",
+            "date":"23 March 2022"            
+    },
+    
+    {
+        "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+        "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+        "author":"Pankil Shah",
+        "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+{
+    "image":"https://techwiser.com/wp-content/uploads/2023/03/Top-Ways-to-Fix-Samsung-Galaxy-Phones-Not-Sending-or-Receiving-Text-Messages.jpg",
+    "titile":"10 Fixes for Samsung Galaxy Phones Not Sending or Receiving Text Messages",
+    "author":"Pankil Shah",
+    "date":"23 March 2022"            
+},
+
+
+]
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\index.js ===== 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AuthContextProvider } from './Context/AuthContext';
+import "./index.css"
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <AuthContextProvider>
+    <App />
+
+    </AuthContextProvider>
+  </React.StrictMode>
+);
+
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\index.css ===== 
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Poppins:wght@200;300;400;500;700&display=swap');
+body{
+    /* background-color: #1D1D1E; */
+}
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Components\Navbar.js ===== 
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Logo from "../Images/logo.png";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import compose from "../Images/compose.png"
+
+
+
+
+function Navbar() {
+
+    const navigate = useNavigate();
+    const {currentUser,logout} = React.useContext(AuthContext);
+
+
+  return (
+    <div>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" sx={{backgroundColor:"black",padding:"20px",color:"white"}} elevation={0}>
+          <Toolbar>
+            <img style={{height:"70px",cursor:"pointer"}} src={Logo} onClick={()=>{navigate('/')}}></img>
+            
+            <div style={{ flexGrow: 1,display:"flex",gap:"3vw" }}>
+            <Typography variant="h6" component="div"  >
+            <Link style={{ textDecoration: 'none',color:"white" }} to="?cat=windows" >WINDOWS</Link>
+            </Typography>
+            <Typography variant="h6" component="div" >
+            <Link style={{ textDecoration: 'none',color:"white" }} to="?cat=android" >ANDROID</Link>
+            </Typography>
+            <Typography variant="h6" component="div" >
+            <Link style={{ textDecoration: 'none',color:"white" }} to="?cat=ios" >IOS</Link>
+            </Typography>
+            <Typography variant="h6" component="div" >
+            <Link style={{ textDecoration: 'none',color:"white" }} to="?cat=macos" >MACOS</Link>
+            </Typography>
+            <Typography variant="h6" component="div" >
+            <Link style={{ textDecoration: 'none',color:"white" }} to="?cat=linux" >LINUX</Link>
+            </Typography>
+            </div>
+
+
+            <div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"1.2vw"}}>
+            <Typography variant="h6" component="div" >
+            {currentUser?<>Welcome {currentUser.username} !</>:<></>}
+            </Typography>
+               {currentUser?<> <IconButton onClick={()=>{navigate("/write")}} >
+                    <img height={50} style={{marginRight:"15px"}} src={compose}></img>
+                </IconButton></>:<></>}
+                
+            {currentUser?<>
+              <Button color="inherit" sx={{border:"3px solid white !important"}}  variant="outlined" onClick={logout} >Logout</Button>
+
+            </>:<>
+            <Button color="inherit" sx={{border:"3px solid white !important"}}  variant="outlined" onClick={()=>{navigate('/login')}} >Login</Button>
+
+            </>}
+            </div>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <ToastContainer />
+    </div>
+  );
+}
+
+export default Navbar;
+.
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Context\AuthContext.js ===== 
+import axios from 'axios';
+import {createContext} from 'react';
+import { useEffect,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+export const AuthContext = createContext()
+
+
+export const AuthContextProvider = ({children})=>{
+    const [currentUser, setcurrentUser] = useState(JSON.parse(localStorage.getItem('user')|| null))
+    const login = async(inputs)=>{
+        const res = await axios.post("auth/login",inputs)
+        setcurrentUser(res.data)
+    }
+    const logout = async(inputs)=>{
+        const res = await axios.post("http://localhost:3000/auth/logout")
+        setcurrentUser(null);
+        localStorage.clear();
+        window.location.href = "/"
+    }
+
+
+
+    useEffect(() => {
+        localStorage.setItem('user',JSON.stringify(currentUser))
+    }, [currentUser]);
+
+    return (
+        <AuthContext.Provider value={{currentUser,login,logout}} >
+            {children}
+            </AuthContext.Provider>
+    )
+    
+}.
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Home.js ===== 
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import moment from "moment";
+
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import { Container, Divider, Stack } from "@mui/material";
+// const blogsamples = require("../BlogsSample.js");
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
+function Home() {
+  const [posts, setposts] = useState([]);
+  const cat = useLocation().search;
+  const location = useLocation();
+  console.log(posts);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/posts${cat}`);
+        setposts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [cat]);
+
+  return (
+    <div>
+      <Container maxWidth="m">
+        <Stack>
+          <h1
+            style={{
+              fontFamily: "poppins",
+              fontWeight: "500",
+              fontSize: "2vw",
+              cursor: "default",
+              marginTop: "25px",
+              textDecoration:"underline"
+            }}
+          >
+            Latest Blog Posts
+          </h1>
+        </Stack>
+
+        <Box sx={{ width: "100%" }}>
+          <Grid container spacing={2}>
+            <Grid item >
+              <div>
+                <Grid container rowSpacing={1} columnSpacing={{ md: 3 }}>
+                  {posts.map((value, index) => {
+                    return (
+                      <Grid item>
+                        <Card sx={{ width: "23vw " }} elevation={2}>
+                          <CardMedia component="img" image={value.img} />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="div"
+                            >
+                              <Link
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                                to={`/post/${posts[index].id}}`}
+                              >
+                                {value.title}
+                              </Link>
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button size="small">
+                              {" "}
+                              {moment(value.date).fromNow()}
+                            </Button>
+                            <Button size="small">{value.username}</Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </div>{" "}
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
+    </div>
+  );
+}
+
+export default Home;
+..
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Login.js ===== 
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import { Button, TextField } from "@mui/material";
+import "./Style.css";
+import { useNavigate } from "react-router";
+import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import { useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
+
+
+
+
+function Login() {
+  const navigate = useNavigate();
+  const [inputs, setinputs] = useState({
+    username: "",
+    password: "",
+  });
+
+  const {login} = React.useContext(AuthContext);
+  const handleChange = (e) => {
+    setinputs(prev=>({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleLogin = async(e)=>{
+    e.preventDefault()
+    try {
+      const resp = await login(inputs)
+      
+      toast.success("Logged In !", {
+      });   
+      setTimeout(() => {
+        navigate("/")
+      }, 2000); 
+    } catch (error) {
+      console.log("Error -----> ",error);
+      if(error.response.data==="User Already Exists"){
+        toast.error("User Already Exists !", {
+        });
+      }
+
+      if(error.response.data==="Wrong Username Or Password"){
+        toast.error("Wrong Username or Password !", {
+      }); 
+      }
+    }
+  }
+  return (
+    <>
+      {/* Left Side */}
+      <div>
+        <Box sx={{ width: "100%" }}>
+          <Stack direction={"row"} spacing={2}>
+            <Container maxWidth="m">
+              <Box sx={{ height: "100%", marginTop: "8vh" }}>
+                <h1
+                  style={{
+                    fontFamily: "poppins",
+                    fontWeight: "300",
+                    fontSize: "3vw",
+                    marginLeft: "25px",
+                    cursor: "default",
+
+                  }}
+                >
+                  Login To Get Started.
+                </h1>
+
+                <Container
+                  maxWidth="m"
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    marginTop: "3vh",
+                    padding: "15px",
+                  }}
+                >
+                  <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Username
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Username"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px 15px",
+                      },
+                    }}
+                    name="username"
+                    onChange={handleChange}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  />
+
+                  <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "3vh",
+                      border: "none",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Password
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Password"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px 15px",
+                      },
+                    }}
+                    name="password"
+                    onChange={handleChange}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  />
+                  <h4
+                    style={{
+                      color: "gray",
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "1vh",
+                      cursor: "pointer",
+                      fontStyle: "italic",
+                      textDecoration: "underline",
+                    }}
+                    onClick={() => navigate("/register")}
+                  >
+                    Create An Account
+                  </h4>
+
+                  <Button
+                    style={{
+                      marginTop: "2vw",
+                      width: "20vw",
+                      backgroundColor: "black",
+                    }}
+                    variant="contained"
+                    onClick={handleLogin}
+                  >
+                    Sign-In
+                  </Button>
+                </Container>
+                <div></div>
+              </Box>
+            </Container>
+          </Stack>
+        </Box>
+        
+      </div>
+      <ToastContainer />
+
+    </>
+  );
+}
+
+export default Login;
+echo ...
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Register.js ===== 
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import { Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router";
+import { prepareCssVars } from "@mui/system";
+import { useState } from "react";
+import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
+
+
+function Register() {
+  const navigate = useNavigate();
+  const [inputs, setinputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+
+  const handleChange = (e) => {
+    setinputs(prev=>({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleRegister = async(e)=>{
+    e.preventDefault()
+    try {
+      await axios.post("auth/register",inputs)
+      toast.success("User Created !", {
+      });   
+      setTimeout(() => {
+        navigate("/login")
+      }, 2000); 
+    } catch (error) {
+      console.log("Error -----> ",error);
+      if(error.response.data==="User Already Exists"){
+        toast.error("User Already Exists !", {
+        });
+      }
+    }
+  }
+  console.log(inputs);
+  return (
+    <>
+      {/* Left Side */}
+      <div>
+        <Box sx={{ width: "100%" }}>
+          <Stack direction={"row"} spacing={2}>
+            <Container maxWidth="m">
+              <Box sx={{ height: "100%", marginTop: "8vh" }}>
+                <h1
+                  style={{
+                    fontFamily: "poppins",
+                    fontWeight: "300",
+                    fontSize: "3vw",
+                    marginLeft: "25px",
+                    cursor: "default",
+                  }}
+                >
+                  Create Your Free Account!
+                </h1>
+
+                <Container
+                  maxWidth="m"
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    marginTop: "2vh",
+                    padding: "15px",
+                  }}
+                >
+                  <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Username
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Username"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    name="username"
+                    onChange={handleChange}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px 15px",
+                      },
+                    }}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  />
+
+                  <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "1vh",
+                      border: "none",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Email
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Profile Image link"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    name="email"
+                    onChange={handleChange}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px 15px",
+                      },
+                    }}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  />
+
+                  <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "1vh",
+                      border: "none",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Password
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Password"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    name="password"
+                    onChange={handleChange}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px 15px",
+                      },
+                    }}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  />
+
+                  {/* <h1
+                    style={{
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "1vh",
+                      border: "none",
+                      cursor: "default",
+                    }}
+                  >
+                    {" "}
+                    Profile Image
+                  </h1>
+                  <TextField
+                    id="outlined-basic"
+                    variant="standard"
+                    placeholder="  Enter Profile Image link"
+                    InputProps={{
+                      disableUnderline: true,
+                      color: "black",
+                    }}
+                    sx={{
+                      input: {
+                        color: "black",
+                        border: "3px solid black",
+                        borderRadius: "2vh",
+                        padding: "8px",
+                      },
+                    }}
+                    autoComplete="off"
+                    style={{
+                      margin: "2px 0px",
+                      width: "20vw",
+                    }}
+                  /> */}
+
+                  <h4
+                    style={{
+                      color: "gray",
+                      fontFamily: "poppins",
+                      fontWeight: "200",
+                      marginTop: "1vh",
+                      cursor: "pointer",
+                      fontStyle: "italic",
+                      textDecoration: "underline",
+                    }}
+                    onClick={() => navigate("/login")}
+                  >
+                    Already Have An Account ?
+                  </h4>
+
+                  <Button
+                    style={{
+                      marginTop: "2vw",
+                      width: "20vw",
+                      backgroundColor: "black",
+                    }}
+                    variant="contained"
+                    onClick={handleRegister}
+                  >
+                    Create-Account
+                  </Button>
+                </Container>
+                <div></div>
+              </Box>
+            </Container>
+          </Stack>
+        </Box>
+        <ToastContainer />
+      </div>
+    </>
+  );
+}
+
+export default Register;
+echo ...
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Single.js ===== 
+import React, { useState, useEffect, useContext } from "react";
+import { useLocation } from "react-router-dom";
+import moment from "moment";
+import axios from "axios";
+import { AuthContext } from "../Context/AuthContext.js";
+import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
+import { Avatar, Box, Button, Container, Stack } from "@mui/material";
+
+function Single() {
+  const [posts, setposts] = useState([]);
+  const location = useLocation().search;
+  const pathname = window.location.pathname;
+  const postId = pathname.split("/")[2];
+  const { currentUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handlePostDelete = () => {
+    const currentPostId = postId.split("%")[0];
+    const del = axios.delete(`http://localhost:3000/posts/${currentPostId}`,
+    );
+
+    toast.success("Post Deleted Successfully");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+
+
+  const handlePostUpdate = () => {
+    const currentPostId = postId.split("%")[0];
+    setTimeout(() => {
+      navigate(`/write`,{state:{
+        post:posts,
+        postid:currentPostId
+      }});
+    }, 1000);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/posts/${postId}`);
+        setposts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [postId]);
+  return (
+    <>
+      <div>
+      <Container width="500px" sx={{display:"flex",alignItems:"center"}}>
+        <Box style={{display:"flex",justifyContent:"center"}} >
+
+
+        <Container maxWidth="m">
+              <Box sx={{ height: "100%", marginTop: "2vh" }}>
+                <div>
+                  <img style={{ height: "45vh" }} src={posts?.img}></img>
+                  <h1>{posts.title}</h1>
+                  <p>{posts.desc}</p>
+                  <p style={{marginTop:"1vh",fontWeight:"500"}}>{moment(posts.date).fromNow()}</p>
+
+
+                  <p style={{fontWeight:"500"}}>Written By : {posts.username}</p>
+
+                  {currentUser != null ? (
+                    currentUser.username == posts.username ? (
+                      <Box sx={{ marginTop: "2vh" }}>
+                        <Button
+                          style={{
+                            backgroundColor: "black",
+                            color: "white",
+                            marginRight: "1vw",
+                          }}
+                          variant="contained"
+                          onClick={handlePostUpdate}
+                        >
+                          Edit Post
+                        </Button>
+                        <Button
+                          onClick={handlePostDelete}
+                          color="error"
+                          variant="contained"
+                        >
+                          Delete Post
+                        </Button>
+                      </Box>
+                    ) : (
+                      <></>
+                    )
+                  ) : (
+                    <></>
+                  )}
+                  <ToastContainer />
+                </div>
+              </Box>
+            </Container>
+
+        </Box>
+      </Container>
+        
+      </div>
+      <ToastContainer />
+    </>
+  );
+}
+
+export default Single;
+echo ...
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Write.js ===== 
+import { Button, TextField, Typography } from "@mui/material";
+import axios from "axios";
+import React, { useEffect, useState,useRef,usememo } from "react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import moment from "moment";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import {useLocation} from 'react-router-dom';
+import JoditEditor from 'jodit-react';
+
+
+
+
+function Write() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const postIdToEdit  = location?.state?.postid;
+  const postEdit = location?.state?.post;
+  const [categorySelect, setcategorySelect] = React.useState("");
+  const getUID = localStorage.getItem("user");
+  const userData = JSON.parse(localStorage.getItem("user"))
+
+
+
+
+  const [inputs, setinputs] = useState({
+    title: "",
+    desc: "",
+    img: "",
+    date: null,
+    uid: null,
+    category: null,
+  });
+
+  useEffect(() => {
+    if(postIdToEdit){
+      setinputs({
+        title:postEdit.title,
+    desc: postEdit.desc,
+    img: postEdit.img,
+    date: postEdit.date,
+    uid: postEdit.uid,
+    category: postEdit.category,
+
+      })
+    }
+  }, [])
+  
+
+
+  const handleChange = (e) => {
+    setinputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setinputs((prev) => ({ ...prev, date: moment().format() }));
+    setinputs((prev) => ({ ...prev, uid: JSON.parse(getUID).id }));
+    setinputs((prev) => ({ ...prev, category: categorySelect }));
+  };
+
+  const handleCategoryChange = (event) => {
+    setcategorySelect(event.target.value);
+  };
+  const addData = async (e) => {
+    e.preventDefault();
+    const addPost = await axios.post("http://localhost:8080/api/posts/", inputs);
+    toast.success("Post Added Successfully");
+    setTimeout(() => {
+      navigate("/")
+    }, 1000);
+    console.log(addPost);
+  };
+
+
+
+  const updatePost = async (e)=>{
+       await axios.put(`http://localhost:8080/api/posts/${postIdToEdit}`,inputs);
+    toast.success("Post Updated Successfully");
+    setTimeout(() => {
+      navigate("/")
+    }, 1000);
+  }
+  console.log(inputs);
+
+  return (
+    <div>
+      {userData?<><Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "5vh",
+          "&:hover": {},
+        }}
+      >
+        <Box sx={{ width: "50%", padding:"4vh",border:"1px solid gray",         boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+ }}>
+        <h1
+            style={{
+              fontFamily: "poppins",
+              fontWeight: "500",
+              fontSize: "2vw",
+              cursor: "default",
+              fontStyle: "italic",
+              marginTop: "25px",
+              marginBottom:"15px"
+            }}
+          >
+            
+            {postIdToEdit?<>Edit Your Post !</>:<>Create A Post !</>}
+          </h1>
+          <Stack spacing={2}>
+            <TextField
+              id="outlined-basic"
+              label="Enter Title"
+              variant="outlined"
+              name="title"
+              onChange={handleChange}
+              value={inputs.title}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Enter Description"
+              multiline
+              rows={6}
+              variant="outlined"
+              name="desc"
+              onChange={handleChange}
+              value={inputs.desc}
+
+            />
+            <TextField
+              id="outlined-basic"
+              label="Enter Image Url"
+              variant="outlined"
+              name="img"
+              onChange={handleChange}
+              value={inputs.img}
+
+            />
+            {postIdToEdit?<>
+              </>:<><Select
+              value={categorySelect}
+              onChange={handleCategoryChange}  
+            
+            >
+
+              <MenuItem value={"windows"}>Windows</MenuItem>
+              <MenuItem value={"android"}>Android</MenuItem>
+              <MenuItem value={"ios"}>IOS</MenuItem>
+              <MenuItem value={"macos"}>MacOs</MenuItem>
+              <MenuItem value={"linux"}>Linux</MenuItem>
+            </Select></>}
+
+            <br></br>
+            <Box style={{ display: "flex", justifyContent: "center" }}>
+              
+            {postIdToEdit?
+            <>
+            <Button
+                variant="contained"
+                sx={{
+                  background: "black",
+                  color: "white",
+                  width: "50%",
+                  padding: "10px",
+                }}
+                onClick={updatePost}
+              >
+                            
+
+                UPDATE POST
+              </Button>
+            </>:
+            <>
+            <Button
+                variant="contained"
+                sx={{
+                  background: "black",
+                  color: "white",
+                  width: "50%",
+                  padding: "10px",
+                }}
+                onClick={addData}
+              >
+                            
+
+                ADD POST
+              </Button>
+            </>}
+              
+            </Box>
+          </Stack>
+        </Box>
+      </Box></>:<>
+      <center style={{marginTop:"3vh"}} ><h1>You Are Not Authrosied</h1></center>
+      </>}
+    </div>
+  );
+}
+
+export default Write;
+echo ...
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\src\Pages\Style.css ===== 
+echo ...
+===== E:\0other imp\SideProjects\blogging_project\React-MySQL-Blog-App\Client\public\index.html ===== 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="https://cdn.dribbble.com/users/3263437/screenshots/6590941/c_logo-04.jpg">
+
+    <style>
+      * {
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+      }
+    </style>
+    <title>BlogSpot.</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+
