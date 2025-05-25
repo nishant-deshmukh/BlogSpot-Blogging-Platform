@@ -90,6 +90,35 @@ npm install
 
 ```
 
+**Database Schema Setup:** You'll need to set up your MySQL database and tables. Here's a basic SQL schema to get started:
+
+    ```
+    -- Create Database
+    CREATE DATABASE IF NOT EXISTS blogapp_db;
+    USE blogapp_db;
+
+    -- Create Users Table
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(255) NOT NULL UNIQUE,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        img VARCHAR(255), -- Optional: for user profile image
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- Create Posts Table
+    CREATE TABLE IF NOT EXISTS posts (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        content TEXT NOT NULL,
+        img VARCHAR(255), -- Optional: for post header image
+        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        uid INT NOT NULL,
+        FOREIGN KEY (uid) REFERENCES users(id) ON DELETE CASCADE
+    );
+
+    ```
 **Note:** Ensure your database name matches `DB_DATABASE` in your `.env` file.
 
 ### 3\. Frontend Setup (Client)
