@@ -191,6 +191,14 @@ Authorization: Bearer <your_jwt_token_here>
 
 ```
 
+🎥 Demo
+-------
+
+A screen recording demonstrating all features of the BlogSpot Blogging Platform will be attached here.
+
+[[Google Drive Public Link to Demo Video]](https://drive.google.com/file/d/1BA-lZw63A3D8Rr-EUn1Cfl_TsflVZiEI/view?usp=drive_link)
+
+
 📄 License
 ----------
 
